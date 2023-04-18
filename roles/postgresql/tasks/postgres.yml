@@ -1,0 +1,30 @@
+---
+- name: PostgreSQL
+  ansible.builtin.apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+      - python3-psycopg2
+    state: present
+    update_cache: yes
+
+- name: PostgreSQL service
+  ansible.builtin.service:
+    name: postgresql
+    state: started
+    enabled: true
+
+- name: Create a new database with name "{{db_name}}"
+  community.postgresql.postgresql_db:
+    name: '{{db_name}}'
+  become_user: postgres
+
+- name: Add extensions to the database
+  community.postgresql.postgresql_ext:
+    name: '{{item}}'
+    db: '{{db_name}}'
+  become_user: postgres
+  with_items:
+    - citext
+
+

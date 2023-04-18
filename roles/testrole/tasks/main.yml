@@ -1,0 +1,6 @@
+---
+- name: Basic Ansible Test
+  ansible.builtin.file:
+    path: /tmp/ansibleisworking
+    state: directory
+    mode: '0755'

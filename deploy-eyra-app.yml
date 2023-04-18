@@ -1,0 +1,12 @@
+---
+- hosts: "{{ eyra_env }}"
+  gather_facts: yes
+  serial: 5
+  roles: 
+    - role: postgresql
+      tags: postgresql
+ #   - role: predeploy
+ #     tags: predeploy
+ #   - role: deployartifact
+ #     tags: deploy
+    
