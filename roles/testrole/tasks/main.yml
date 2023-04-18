@@ -1,5 +1,6 @@
 ---
 - name: Basic Ansible Test
+  connection: local
   ansible.builtin.file:
     path: /tmp/ansibleisworking
     state: directory
