@@ -1,22 +1,38 @@
 ---
+
+- name: Enable SSH through firewall
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: Enable HTTP through firewall
+  ufw:
+    rule: limit
+    port: http
+    proto: tcp
+
+- name: Disable firewall
+  ufw:
+    state: disabled
+
+- name: Install ssh software
+  ansible.builtin.apt: 
+    name: openssh-server
+    state: present
+
 - name: Enable Remote Access
-  connection: local
-  become: true
   ansible.builtin.service:
      name: ssh
      state: started
      enabled: yes
 
 - name: Install nginx web server
-  connection: local
-  become: true
   ansible.builtin.apt:
      name: nginx
      state: present
      
 - name: Make sure nginx is running
-  connection: local
-  become: true
   ansible.builtin.service:
      name: nginx
      state: started
