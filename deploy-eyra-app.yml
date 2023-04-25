@@ -2,5 +2,7 @@
 - hosts: localhost
   gather_facts: no
   become: yes
-  roles: 
-     - role: basicos
+  tasks:
+    - name: do HTTP request to see if ansible playbook is executed
+      ansible.builtin.uri:
+         url: http://panl.dev.eyra.co
