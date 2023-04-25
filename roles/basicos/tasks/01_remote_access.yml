@@ -1,0 +1,23 @@
+---
+- name: Enable Remote Access
+  connection: local
+  become: true
+  ansible.builtin.service:
+     name: ssh
+     state: started
+     enabled: yes
+
+- name: Install nginx web server
+  connection: local
+  become: true
+  ansible.builtin.apt:
+     name: nginx
+     state: present
+     
+- name: Make sure nginx is running
+  connection: local
+  become: true
+  ansible.builtin.service:
+     name: nginx
+     state: started
+     enabled: yes
