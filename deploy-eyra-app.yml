@@ -6,3 +6,9 @@
     - name: do HTTP request to see if ansible playbook is executed
       ansible.builtin.uri:
          url: http://panl.dev.eyra.co
+
+    - name: add public key
+      ansible.posix.authorized_key:
+        user: tnan
+        state: present
+        key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7Vn+DBDlEEcF1KirjNdsMmFdgA1uOsxHPHRCR4OWv9
