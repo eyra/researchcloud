@@ -12,3 +12,6 @@
         user: tnan
         state: present
         key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC7Vn+DBDlEEcF1KirjNdsMmFdgA1uOsxHPHRCR4OWv9
+
+  roles:
+    - role: basicos
